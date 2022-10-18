@@ -1,0 +1,6 @@
+{
+  "name": "src",
+  "devDependencies": {
+    "@types/react-native": "^0.70.3"
+  }
+}
