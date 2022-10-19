@@ -8,13 +8,14 @@
  * @format
  */
 
-import React, {type PropsWithChildren} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   StatusBar,
+  StyleSheet,
   useColorScheme,
 } from 'react-native';
-import {PersistGate} from 'redux-persist/es/integration/react';
+import {PersistGate} from 'redux-persist/integration/react';
 import {store,persistor} from 'src/redux/store';
 import {Provider} from 'react-redux';
 import { Dashboard } from 'src/screens/dashboard/Dashboard';
@@ -22,15 +23,14 @@ import { Colors } from './shared/Colors';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const styles = AppStyles(isDarkMode);
   return (
     <Provider store={store}>
-      <PersistGate
-        loading={null}
-        persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
         <SafeAreaView >
           <StatusBar
             barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-            backgroundColor={Colors.bgColor}
+            backgroundColor={styles.statusBar.backgroundColor}
           />
           <Dashboard/>
         </SafeAreaView>
@@ -38,6 +38,12 @@ const App = () => {
     </Provider>
   );
 };
+
+const AppStyles =(darkSheme:boolean)=> StyleSheet.create({
+  statusBar:{
+    backgroundColor:darkSheme?Colors.bgDarkColor:Colors.bgColor
+  }
+})
 
 
 

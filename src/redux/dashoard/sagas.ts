@@ -17,8 +17,7 @@ export function* fetchDashboardData(action: RequestDashboardType) {
   } catch (error) {
     const errorResponse: AxiosError = error as AxiosError;
     if (errorResponse.response) {
-      const errorMessage: {message: string} = errorResponse.response.data;
-      yield put(requestArticlesFailed({error: errorMessage.message}));
+      yield put(requestArticlesFailed({error: "api error"}));
     }
   }
 }

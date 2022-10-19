@@ -1,28 +1,26 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useEffect } from 'react';
-import {View, Image, FlatList, ActivityIndicator} from 'react-native';
+import {View, Image, FlatList, ActivityIndicator, useColorScheme} from 'react-native';
 import { useDashboard } from 'src/hooks/useDashboard';
 import { Header } from 'src/components/core';
 import { DashboardStyles } from './Dashboard.style';
 import { ListItem,GridItem } from 'src/components/core';
 import { IMAGE_ENDPOINT } from 'src/services/ApiConstants';
 
-
 export interface DashboardProps{
 
 }
-const {
-  viewContainer,
-  menuIcon
-} = DashboardStyles
+
 export const Dashboard:FunctionComponent<DashboardProps>=()=>{
   const [toggleList,setToggleList] = useState(false);
   const [pageNumber,setPageNumber] = useState(0);
-
+  const isDarkMode = useColorScheme() === 'dark';
+  const styles = DashboardStyles(isDarkMode)
   const {fetchDashboard, isLoading, data, error} = useDashboard();
-  
+
+
   useEffect(()=>{
-      fetchDashboard({page:pageNumber})
+    fetchDashboard({page:pageNumber})
   },[])
 
   const onEndReached=()=>{
@@ -32,13 +30,13 @@ export const Dashboard:FunctionComponent<DashboardProps>=()=>{
 
   return(
 
-    <View style={viewContainer}>
+    <View style={styles.viewContainer}>
       <Header title='Dashboard' actionPressed={()=>setToggleList(!toggleList)}>
         {
           toggleList?
-          <Image style={menuIcon} source={require('src/assets/ic_grid.png')}/>
+          <Image style={styles.menuIcon} source={require('src/assets/ic_grid.png')}/>
           :
-          <Image style={menuIcon} source={require('src/assets/ic_list.png')}/>
+          <Image style={styles.menuIcon} source={require('src/assets/ic_list.png')}/>
         }
       </Header>
       <View >

@@ -4,6 +4,14 @@ import {
   REQUEST_ARTICLES_SUCCESS,
 } from './actionType';
 
+export interface rehydrateDataType{
+  articleDashboard:{
+    dashboardData:  [],
+    error : "",
+    isLoading: boolean
+  } 
+
+}
 export interface DashboardPayloadType {
   page: number;
 }
@@ -37,4 +45,9 @@ export type DashboardFailedType = {
   payload: DashboardFailedPayloadtype;
 };
 
-export type DashboardActions = RequestDashboardType | DashboardSuccessType | DashboardFailedType;
+export type DashboardPERSIST = {
+  type: "persist/REHYDRATE";
+  payload: rehydrateDataType;
+};
+
+export type DashboardActions = RequestDashboardType | DashboardSuccessType | DashboardFailedType | DashboardPERSIST;

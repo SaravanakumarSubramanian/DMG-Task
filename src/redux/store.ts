@@ -9,6 +9,9 @@ import logger from 'redux-logger';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
+  whitelist:[
+    'articleDashboard'
+  ]
 };
 const persistedReducer = persistReducer<any, any>(persistConfig, rootReducer);
 const sagaMiddleware = createSagaMiddleware();

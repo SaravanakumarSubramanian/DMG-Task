@@ -24,10 +24,18 @@ export default (state = initialDashboardState, action: DashboardActions) => {
         error: '',
       };
     case REQUEST_ARTICLES_ERROR:
-      return {...state, error: action.payload.error, isLoading: false};
+      
+      return {...state, error: action.payload.error, dashboardData: state.dashboardData, isLoading: false};
     case REQUEST_ARTICLES:
       return {...state, isLoading: true, error: ''};
+    case "persist/REHYDRATE":
+      console.log('state.REHYDRATE',action.payload)
+      return {
+        isLoading: false,
+        dashboardData: action.payload.articleDashboard.dashboardData,
+        error: '',
+      };
     default:
-      return {...state};
+      return state;
   }
 };
