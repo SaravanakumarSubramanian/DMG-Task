@@ -1,15 +1,15 @@
-import {BASE_URL, BASE_ENDPOINT, ARTICLE_SEARCH,API_KEY} from 'src/services/ApiConstants';
+import {BASE_URL, BASE_ENDPOINT, ARTICLE_SEARCH,API_KEY, QUERY_KEYWORD} from 'src/services/ApiConstants';
 import {getApiRequest} from 'src/services/RestService';
 import { DashboardPayloadType, DashboardSuccessPayloadType} from 'src/redux/dashoard/types';
 
 export const requestDashboardApi = async (body: DashboardPayloadType) => {
   try {
     console.log(
-      `dashboardService url: ${BASE_URL}${BASE_ENDPOINT}${BASE_ENDPOINT} body: ${JSON.stringify(
+      `dashboardService url: ${BASE_URL}${BASE_ENDPOINT}${ARTICLE_SEARCH} body: ${JSON.stringify(
         body,
       )} `,
     );
-    const response: string = await getApiRequest(`https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=pdiRET3l7Osnyk7IHvSPl0ziiWFCFly1&q=Science&page=${body.page}`);
+    const response: string = await getApiRequest(`${BASE_URL}${BASE_ENDPOINT}${ARTICLE_SEARCH}?api-key=${API_KEY}&q=${QUERY_KEYWORD}&page=${body.page}`);
     console.log(
       `response: ${JSON.stringify(response)}`,
     );
