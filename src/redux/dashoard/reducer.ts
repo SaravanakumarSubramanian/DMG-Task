@@ -30,11 +30,16 @@ export default (state = initialDashboardState, action: DashboardActions) => {
       return {...state, isLoading: true, error: ''};
     case "persist/REHYDRATE":
       console.log('state.REHYDRATE',action.payload)
-      return {
-        isLoading: false,
-        dashboardData: action.payload.articleDashboard.dashboardData,
-        error: '',
-      };
+      if(action.payload){
+        return {
+          isLoading: false,
+          dashboardData: action.payload.articleDashboard.dashboardData,
+          error: '',
+        };
+      }else{
+        return state;
+      }
+
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "src/shared/Colors";
 
-export const HeaderStyle = StyleSheet.create({
+export const HeaderStyle = (darkScheme:boolean)=> StyleSheet.create({
   headerContainer:{
     flexDirection:'row',
     alignItems:'center',
@@ -16,6 +17,7 @@ export const HeaderStyle = StyleSheet.create({
   },
   titleStyle:{
     fontSize:15,
-    fontWeight:'bold'
+    fontWeight:'bold',
+    color:darkScheme?Colors.white:Colors.black
   }
 })

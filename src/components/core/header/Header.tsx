@@ -1,5 +1,5 @@
 import React,{ Children, FunctionComponent, ReactNode } from "react";
-import { View,Text, TouchableOpacity } from "react-native";
+import { View,Text, TouchableOpacity, useColorScheme } from "react-native";
 import {HeaderStyle} from './Header.style';
 
 interface HeaderProps{
@@ -7,24 +7,21 @@ interface HeaderProps{
     actionPressed?:()=>void,
     children:ReactNode
 }
-const {
-    headerContainer,
-    menuContainer,
-    titleContainer,
-    titleStyle
-} = HeaderStyle;
+
 export const Header:FunctionComponent<HeaderProps>=({
     title,
     actionPressed = ()=>{},
     children
 })=>{
+    const isDarkMode = useColorScheme() === 'dark'
+    const styles = HeaderStyle(isDarkMode)
     return(
-        <View style={headerContainer}>
-            <View style={menuContainer}/>
-            <View style={titleContainer}>
-                <Text style={titleStyle}>{title}</Text>
+        <View style={styles.headerContainer}>
+            <View style={styles.menuContainer}/>
+            <View style={styles.titleContainer}>
+                <Text style={styles.titleStyle}>{title}</Text>
             </View>
-            <View style={menuContainer}>
+            <View style={styles.menuContainer}>
                 <TouchableOpacity onPress={actionPressed}>
                     {
                         children
