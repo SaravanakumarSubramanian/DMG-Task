@@ -19,11 +19,11 @@ export const GridItem:FunctionComponent<GridItemProps>=({
     const styles = GridItemStyle(isDarkMode)
     return(
         <View style={styles.viewContainer}>
-            <Image style={styles.thumbnail} source={{uri:imageUrl}} />
+            <Image testID={'thumbnailImg'} style={styles.thumbnail} source={{uri:imageUrl}} />
             <View style={styles.contentStyle}>
-                <Text numberOfLines={2} style={styles.titleStyle}>{title}</Text>
-                <Text style={styles.snippetStyle}>{snippet}</Text>
-                <Text style={styles.dateStyle}>{date}</Text>
+                <Text testID={'titleTxt'} numberOfLines={2} style={styles.titleStyle}>{title}</Text>
+                <Text testID={'snippetTxt'} style={styles.snippetStyle}>{snippet}</Text>
+                <Text testID={'dateTxt'} style={styles.dateStyle}>{date}</Text>
             </View>
 
         </View>
