@@ -7,6 +7,9 @@ import {
 import {DashboardPayloadType} from 'src/redux/dashoard/types';
 import {requestArticles} from 'src/redux/dashoard/action';
 
+/**
+ * @type for useDashboard hook
+ */
 export interface UseDashboardReturn {
   isLoading: boolean;
   data: any;
@@ -14,6 +17,10 @@ export interface UseDashboardReturn {
   fetchDashboard(payload: DashboardPayloadType): void;
 }
 
+/**
+ * 
+ * @returns useDashboard hook
+ */
 export const useDashboard = (): UseDashboardReturn => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);

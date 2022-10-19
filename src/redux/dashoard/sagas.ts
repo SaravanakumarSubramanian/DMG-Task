@@ -5,6 +5,10 @@ import {requestArticlesFailed,requestArticlesSuccess} from './action';
 import {REQUEST_ARTICLES} from './actionType';
 import {requestDashboardApi} from 'src/services/DashboardService';
 
+/**
+ * 
+ * @param action call Dashboard api request and returns reponse to the reducer
+ */
 export function* fetchDashboardData(action: RequestDashboardType) {
   console.log(`saga fetchHome ${JSON.stringify(action.payload)}`);
 

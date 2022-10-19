@@ -2,6 +2,11 @@ import {BASE_URL, BASE_ENDPOINT, ARTICLE_SEARCH,API_KEY, QUERY_KEYWORD} from 'sr
 import {getApiRequest} from 'src/services/RestService';
 import { DashboardPayloadType, DashboardSuccessPayloadType} from 'src/redux/dashoard/types';
 
+/**
+ * 
+ * @param body page number
+ * @returns api response
+ */
 export const requestDashboardApi = async (body: DashboardPayloadType) => {
   try {
     console.log(

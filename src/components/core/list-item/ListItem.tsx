@@ -2,14 +2,20 @@ import React,{  FunctionComponent } from "react";
 import { useColorScheme } from "react-native";
 import { View, Text, Image } from "react-native";
 import {ListItemStyle} from './ListItem.style';
-
+/**
+ * @type for list item widget
+ */
 interface ListItemProps{
     title:string,
     date:string,
     snippet:string,
     imageUrl:string
 }
-
+/**
+ * 
+ * @param param0 title,date,snippet,imageUrl
+ * @returns ListItem Wigdet
+ */
 export const ListItem:FunctionComponent<ListItemProps>=({
     title,
     date,

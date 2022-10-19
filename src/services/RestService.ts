@@ -1,5 +1,11 @@
 import axios, {AxiosError, AxiosRequestConfig} from 'axios';
 
+/**
+ * 
+ * @param url 
+ * @param config 
+ * @returns get Api request
+ */
 export const getApiRequest = (
   url: string,
   config?: AxiosRequestConfig | undefined,

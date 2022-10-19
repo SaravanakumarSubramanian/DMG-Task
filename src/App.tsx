@@ -20,7 +20,10 @@ import {store,persistor} from 'src/redux/store';
 import {Provider} from 'react-redux';
 import { Dashboard } from 'src/screens/dashboard/Dashboard';
 import { Colors } from './shared/Colors';
-
+/**
+ * 
+ * @returns App
+ */
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const styles = AppStyles(isDarkMode);

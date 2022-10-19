@@ -1,14 +1,20 @@
 import React,{  FunctionComponent } from "react";
 import { View, Text, Image, useColorScheme } from "react-native";
 import {GridItemStyle} from './GridItem.style';
-
+/**
+ * @type for grid item widget
+ */
 interface GridItemProps{
     title:string,
     date:string,
     snippet:string,
     imageUrl:string
 }
-
+/**
+ * 
+ * @param param0 title,date,snippet,imageUrl
+ * @returns GridItem Wigdet
+ */
 export const GridItem:FunctionComponent<GridItemProps>=({
     title,
     date,

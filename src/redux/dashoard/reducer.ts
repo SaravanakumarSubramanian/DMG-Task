@@ -8,12 +8,13 @@ import {
   DashboardState
 } from './types';
 
+// initial state
 const initialDashboardState: DashboardState = {
   dashboardData: [],
   error: '',
   isLoading: false,
 };
-
+// Dashboard reducer
 export default (state = initialDashboardState, action: DashboardActions) => {
   switch (action.type) {
     case REQUEST_ARTICLES_SUCCESS:
@@ -29,7 +30,6 @@ export default (state = initialDashboardState, action: DashboardActions) => {
     case REQUEST_ARTICLES:
       return {...state, isLoading: true, error: ''};
     case "persist/REHYDRATE":
-      console.log('state.REHYDRATE',action.payload)
       if(action.payload){
         return {
           isLoading: false,

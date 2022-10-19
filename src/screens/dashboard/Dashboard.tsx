@@ -10,7 +10,10 @@ import { IMAGE_ENDPOINT } from 'src/services/ApiConstants';
 export interface DashboardProps{
 
 }
-
+/**
+ * 
+ * @returns Dashboard screen
+ */
 export const Dashboard:FunctionComponent<DashboardProps>=()=>{
   const [toggleList,setToggleList] = useState(false);
   const [pageNumber,setPageNumber] = useState(0);
@@ -20,10 +23,12 @@ export const Dashboard:FunctionComponent<DashboardProps>=()=>{
 
 
   useEffect(()=>{
+    //initial api call
     fetchDashboard({page:pageNumber})
   },[])
 
   const onEndReached=()=>{
+    // api call when list threshold reached with updated page number
     setPageNumber(pageNumber+1)
     fetchDashboard({page:pageNumber})
   }
